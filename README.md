@@ -1,5 +1,5 @@
 ### <p align="center">🎮 MiniRoyale Client 🎮</p>
-<p align= "center">
+<div align= "center">
   <img src="https://img.shields.io/github/last-commit/KornineQ/miniroyale-client">
   <img src="https://img.shields.io/github/license/KornineQ/miniroyale-client">
   <br>
@@ -8,4 +8,6 @@
   <img src="https://img.shields.io/github/downloads/KornineQ/miniroyale-client/total.svg">
   <br>
   <img src="https://img.shields.io/github/languages/top/KornineQ/miniroyale-client">
-</p>
+</div>
+
+----------------------------
