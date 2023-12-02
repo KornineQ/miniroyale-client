@@ -1,0 +1,58 @@
+{
+  "name": "MiniRoyale",
+  "appId": "com.kornineq.client",
+  "productName": "miniroyale",
+  "description": "miniroyale client by kornineq on github",
+  "author": "KornineQ & MiniRoyale",
+  "version": "1.0.1",
+  "main": "main.js",
+  "scripts": {
+    "compile": "electron-webpack",
+    "start": "electron main.js",
+    "build": "electron-builder",
+    "rebuild": "taskkill /f /im miniroyale.exe & electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "devDependencies": {
+    "electron": "^27.1.3",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "@electron/asar": "^3.2.8",
+    "child_process": "^1.0.2",
+    "ps-list": "^8.1.1"
+  },
+  "build": {
+    "files": [
+      "main.js",
+      "preload.js",
+      "loading.html",
+      "detected.html",
+      "assets/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "directories": {
+      "output": "D:\\gameclient\\dist"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "/assets/icon/icon.ico"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
