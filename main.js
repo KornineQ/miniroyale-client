@@ -6,7 +6,6 @@ var { cpus } = require("os");
 let mainWindow;
 let loadingScreen;
 
-//#region Do Some FPS Tricks
 app.commandLine.appendSwitch("disable-frame-rate-limit");
 app.commandLine.appendSwitch("disable-gpu-vsync");
 app.commandLine.appendSwitch("ignore-gpu-blacklist");
@@ -59,7 +58,6 @@ function createLoadingScreen() {
 function createWindow() {
   createLoadingScreen();
 
-  // Check for processes with "cheatengine" in their name
   exec('tasklist', (error, stdout, stderr) => {
     if (error) {
       console.error(`Error checking processes: ${error.message}`);
@@ -69,7 +67,6 @@ function createWindow() {
     const isCheatEngineRunning = stdout.toLowerCase().includes('cheatengine');
 
     if (isCheatEngineRunning) {
-      // Cheat engine detected, show cheat detected message
       mainWindow = new BrowserWindow({
         width: 400,
         height: 200,
@@ -85,16 +82,14 @@ function createWindow() {
         },
       });
       mainWindow.loadFile('detected.html');
-      // Close the loading screen immediately if cheat engine is detected
       loadingScreen.close();
     } else {
-      // No cheat engine detected, continue with the game
       mainWindow = new BrowserWindow({
         width: 1280,
         height: 720,
         icon: `${__dirname}/assets/icon/icon.ico`,
-        title: "MiniRoyale", // Set the title to "MiniRoyale"
-        autoHideMenuBar: true, // Hide the Electron toolbar
+        title: "MiniRoyale",
+        autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
@@ -109,7 +104,6 @@ function createWindow() {
 
       mainWindow.loadURL('https://miniroyale.io/');
 
-      // Close the loading screen after 5 seconds, regardless of site load status
       setTimeout(() => {
         loadingScreen.close();
         mainWindow.show();
@@ -138,7 +132,6 @@ app.on('window-all-closed', () => {
   }
 });
 
-// Handle the close-app message
 ipcMain.on('close-app', () => {
     app.quit();
   });
