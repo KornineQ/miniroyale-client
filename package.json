@@ -10,7 +10,6 @@
     "compile": "electron-webpack",
     "start": "electron main.js",
     "build": "electron-builder",
-    "rebuild": "taskkill /f /im miniroyale.exe & electron-builder",
     "build:mac": "electron-builder --mac",
     "build:linux": "electron-builder --linux"
   },
@@ -35,7 +34,7 @@
     ],
     "asar": true,
     "directories": {
-      "output": "D:\\gameclient\\dist"
+      "output": "dist"
     },
     "mac": {
       "target": "dmg"
